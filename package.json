@@ -1,0 +1,23 @@
+{
+  "name": "filme-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.20.0",
+    "axios": "^1.7.7",
+    "next": "14.2.13",
+    "prisma": "^5.20.0",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1"
+  }
+}
