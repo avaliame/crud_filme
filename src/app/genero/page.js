@@ -6,7 +6,7 @@ export default function ClientePage() {
         <>
             <div className="bg-gray-100 h-screen flex items-center justify-center">
                 <div class="w-full max-w-3xl bg-white p-8 rounded-lg shadow-lg">
-                    <h2 class="text-2xl font-bold mb-6 text-center">Lista de Gêneros de Filmes TESte</h2>
+                    <h2 class="text-2xl font-bold mb-6 text-center">Lista de Gêneros de Filmes </h2>
                     <div className=" mb-4 w-full grid justify-items-end">
                         <a className="px-2 py-2 border border-1 bg-gray-700 rounded-md text-white" href="/genero/formulario">+ Adicionar</a>
                     </div>
