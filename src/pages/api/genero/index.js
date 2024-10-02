@@ -20,11 +20,11 @@ export default async function handler(req, res) {
 
             break;
         case 'PUT':
-            const updatedFilme = await prisma.filme.update({
+            const updatedGenero = await prisma.genero.update({
                 where: { id: parseInt(req.query.id) },
                 data: req.body,
             });
-            res.json(updatedFilme);
+            res.json(updatedGenero);
             break;
 
         case 'DELETE':
@@ -39,8 +39,8 @@ export default async function handler(req, res) {
                 const genero = await prisma.genero.findMany();
                 res.json(genero);
             } else {
-                const filmes = await prisma.filme.findMany();
-                res.status(200).json(filmes);
+                const genero = await prisma.genero.findMany();
+                res.status(200).json(genero);
             }
             break;
 

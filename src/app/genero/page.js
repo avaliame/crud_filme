@@ -36,7 +36,7 @@ export default function ClientePage() {
                             </thead>
                             <tbody>
                                 {data?.map((res) => (
-                                    <tr class="border-b">
+                                    <tr key={res.id} class="border-b">
                                         <td class="px-4 py-2">{res.id}</td>
                                         <td class="px-4 py-2">{res.nome}</td>
                                         <td class="px-4 py-2">

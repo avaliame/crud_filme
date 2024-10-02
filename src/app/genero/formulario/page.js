@@ -17,10 +17,10 @@ export default function Genero() {
         e.preventDefault();
         try {
             const response = await axios.post('/api/genero', { nome })
-            console.log(response)
+            console.log('genero criado com sucesso:', response.data)
         } catch (error) {
             console.log(error)
-        } // Previne o comportamento padrão do formulário
+        }
 
 
     };

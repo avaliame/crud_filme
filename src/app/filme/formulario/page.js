@@ -56,7 +56,7 @@ export default function Filme() {
                     <div class="mb-4">
                         <label for="ano" class="block text-gray-700 text-sm font-bold mb-2">Ano de Produção:</label>
                         <input id="ano" type="number" name="ano"
-                            value={ano} onChange={(e) => setAno(e.target.value)}
+                            value={ano} onChange={(e) => setAno(Number(e.target.value))}
                             placeholder="Digite o ano"
                             class="block w-full bg-gray-200 border border-gray-300 text-gray-700 py-2 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-indigo-500" />
                     </div>
@@ -64,7 +64,7 @@ export default function Filme() {
                     <div class="mb-4">
                         <label for="data_lancamento" class="block text-gray-700 text-sm font-bold mb-2">Data de Lançamento:</label>
                         <input id="data_lancamento"
-                            onChange={(e) => setDatalancamento(e.target.value)}
+                            onChange={(e) => setDatalancamento(new Date(e.target.value))}
                             type="date"
                             value={format(Datalancamento, 'yyyy-MM-dd')}
                             name="data_lancamento"
@@ -84,11 +84,11 @@ export default function Filme() {
                         <select
                             id="genero"
                             name="genero"
-                            value={generoId} onChange={(e) => setGeneroId(e.target.value)}
+                            value={generoId} onChange={(e) => setGeneroId(Number(e.target.value))}
                             class="block w-full bg-gray-200 border border-gray-300 text-gray-700 py-2 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-indigo-500">
                             <option value="">Selecione o gênero</option>
                             {data_genero.map((res) => (
-                                <option value={res.id}>{res.nome}</option>
+                                <option key={res.id} value={res.id}>{res.nome}</option>
                             ))}
                         </select>
                     </div>

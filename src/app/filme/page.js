@@ -1,5 +1,6 @@
 "use client"
 
+
 export default function ClientePage() {
     return (
     <div className="bg-gray-100 h-screen flex items-center justify-center">

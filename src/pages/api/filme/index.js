@@ -14,6 +14,7 @@ export default async function handler(req, res) {
         case 'POST':
             let { titulo, Datalancamento, ano, diretor, generoId } = req.body
             console.log("chegou no backend")
+            console.log(Datalancamento)
             const filme = await prisma.filme.create({ data: { titulo, Datalancamento, ano, diretor, generoId } });
             res.status(201).json(filme);
 
