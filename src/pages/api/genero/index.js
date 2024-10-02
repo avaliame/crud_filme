@@ -28,8 +28,12 @@ export default async function handler(req, res) {
             break;
 
         case 'DELETE':
+            const id = parseInt(req.query.id);
+            if (!id) {
+                return res.status(400).json({ error: 'ID é necessário' });
+            }
             await prisma.genero.delete({
-                where: { id: parseInt(req.query.id) },
+                where: { id: id },
             });
             res.status(204).end();
             break;

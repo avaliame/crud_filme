@@ -7,13 +7,29 @@ export default function ClientePage() {
     
     const [data, setData] = useState([]);
     useEffect(() => {
+		fetchGeneros(); // Função para buscar filmes
+    }, []);
+
+    const fetchGeneros = () => {
         axios.get("/api/genero").then((response) => {
             setData(response.data)
             console.log(response.data)
         }).catch((error) => {
             console.log(error)
         })
-    }, [])
+    };
+
+
+    const deleteGenero = async (id) => {
+        if (window.confirm("Tem certeza que deseja excluir este filme?")) {
+            try {
+                await axios.delete(`/api/genero?id=${id}`);
+                fetchGeneros(); // Atualiza a lista de filmes após exclusão
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    };
 
     return (
         <>
@@ -41,8 +57,13 @@ export default function ClientePage() {
                                         <td class="px-4 py-2">{res.nome}</td>
                                         <td class="px-4 py-2">
                                             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-2">Editar</button>
-                                            <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-3 rounded mr-2">Atualizar</button>
-                                            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Excluir</button>
+                                            
+                                            <button
+                                            onClick={() => deleteGenero(res.id)} // Chama a função de exclusão
+                                            className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">
+                                            Excluir
+                                        </button>
+
                                         </td>
                                     </tr>
                                 ))}
