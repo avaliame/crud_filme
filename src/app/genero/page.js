@@ -3,8 +3,8 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 
-
 export default function ClientePage() {
+    
     const [data, setData] = useState([]);
     useEffect(() => {
         axios.get("/api/genero").then((response) => {

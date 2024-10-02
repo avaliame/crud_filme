@@ -13,7 +13,7 @@ export default async function handler(req, res) {
 
   // Para cada filme obtido, cria um registro no banco de dados
  // await Promise.all(
-   // filmes.map(async (filme) => {
+  // filmes.map(async (filme) => {
 //      await prisma.filme.create({
 //        data: {
 //        titulo: filme.Titulo,

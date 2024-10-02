@@ -29,7 +29,7 @@ export default function Filme() {
             console.log(response)
         } catch (error) {
             console.log(error)
-        } // Previne o comportamento padrão do formulário
+        } 
 
 
     };
