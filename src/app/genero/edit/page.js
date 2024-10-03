@@ -14,7 +14,7 @@ export default function GerenciarGenero() {
     const [mensagem, setMensagem] = useState('');
 
 
-    
+    // Função para buscar todos os gêneros (caso seja necessário)
     useEffect(() => {
         const fetchGenero = async () => {
             try {
@@ -27,7 +27,7 @@ export default function GerenciarGenero() {
         fetchGenero();
     }, []);
 
-    
+    // Função para buscar um gênero específico, se estiver no modo de edição
     useEffect(() => {
         if (id) {
             const fetchGenero = async () => {
@@ -54,7 +54,7 @@ export default function GerenciarGenero() {
             }
             router.push("/genero"); 
         } catch (error) {
-            console.error("Erro ao criar gênero:", error);
+            console.error("Erro ao salvar gênero:", error);
             setMensagem('Gênero já existente !');
         }
     };

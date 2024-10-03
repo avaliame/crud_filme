@@ -22,6 +22,7 @@ export default function CreateGenero() {
             await axios.post('/api/genero', { nome });
             setGenerosCadastrados([...generosCadastrados, nome]); // Adiciona o gênero à lista
             setMensagem('Gênero inserido com sucesso!');
+            setName('');
         } catch (error) {
             console.error("Erro ao criar gênero:", error);
             setMensagem('Gênero já existente !');
