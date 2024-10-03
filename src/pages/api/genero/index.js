@@ -8,6 +8,7 @@ export default async function handler(req, res) {
 
     switch (method) {
         case 'GET':
+            
             const { id } = req.query;
             
             if (id) {
@@ -49,10 +50,19 @@ export default async function handler(req, res) {
             if (!id) {
                 return res.status(400).json({ error: 'ID é necessário' });
             }
-            await prisma.genero.delete({
-                where: { id: id },
-            });
-            res.status(204).end();
+            try {
+            
+                await prisma.genero.delete({
+                    where: { id: id },
+                });
+                res.status(204).end();
+            } catch (error) {
+                if (error.code === 'P2003') {
+                    return res.status(409).json({ error: 'Não é possível excluir o gênero, pois ele está sendo utilizado em outros registros.' });
+                }
+                console.error("Erro ao excluir gênero:", error);
+                res.status(500).json({ error: 'Erro ao excluir gênero.' });
+            }
             break;
         }
 

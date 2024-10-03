@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   // Faz uma requisição à OMDb API buscando filmes de ação
   const response = await axios.get('http://www.omdbapi.com/?s=action&apikey=');
   const filmes = response.data.Search;  // Extrai os filmes da resposta da API
-  console.log(responde.data)
+  console.log(response.data)
 
   // Para cada filme obtido, cria um registro no banco de dados
  // await Promise.all(

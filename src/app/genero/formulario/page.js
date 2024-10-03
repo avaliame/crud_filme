@@ -21,16 +21,15 @@ export default function CreateGenero() {
         try {
             await axios.post('/api/genero', { nome });
             setGenerosCadastrados([...generosCadastrados, nome]); // Adiciona o gênero à lista
-
             setMensagem('Gênero inserido com sucesso!');
-//            router.push('/genero'); // Redireciona para a página de listagem após o sucesso
         } catch (error) {
             console.error("Erro ao criar gênero:", error);
-            setMensagem('Gênero inserido com sucesso!');
+            setMensagem('Gênero já existente !');
 
         }
     };
 
+    
     return (
         <div className='bg-gray-100 h-screen flex items-center justify-center'>
             <div className="bg-white p-8 rounded shadow-lg w-full max-w-sm">

@@ -7,6 +7,8 @@ import { useEffect, useState } from "react"
 export default function ClientePage() {
 	
 	const [data, setData] = useState([]);
+	const [mensagem, setMensagem] = useState(''); 
+
     useEffect(() => {
 		fetchFilmes(); // Função para buscar filmes
     }, []);
@@ -29,8 +31,10 @@ export default function ClientePage() {
             try {
                 await axios.delete(`/api/filme?id=${id}`);
                 fetchFilmes(); // Atualiza a lista de filmes após exclusão
+				setMensagem('Filme excluído com sucesso!');
             } catch (error) {
                 console.log(error);
+				setMensagem('Erro ao excluir gênero. Tente novamente.');
             }
         }
     };
@@ -40,6 +44,8 @@ export default function ClientePage() {
 		<div className="bg-gray-100 h-screen flex items-center justify-center">
 			<div className="w-full max-w-5xl bg-white p-8 rounded-lg shadow-lg">
 				<h2 className="text-2xl font-bold mb-6 text-center">Lista de Filmes</h2>
+				{mensagem && <p className="text-center text-red-500 mb-4">{mensagem}</p>} 
+
 				<div className=" mb-4 w-full grid justify-items-end">
 				<a className="px-2 py-2 border border-1 bg-gray-700 rounded-md text-white" href="/filme/formulario">+ Adicionar</a>
 				</div>
@@ -70,11 +76,11 @@ export default function ClientePage() {
 												<td class="px-4 py-2">{res.Datalancamento}</td>
 												<td class="px-4 py-2">{res.diretor}</td>
 												<td class="px-4 py-2">{res.genero.nome}</td>
-												<td class="px-4 py-2">
+												<td class="px-4 py-2 flex flex-row">
 													<a  href={`/filme/edit?id=${res.id}`} className="bg-blue-900 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-4">Editar</a>
 													
 													<button
-                                            onClick={() => deleteFilme(res.id)} // Chama a função de exclusão
+                                            onClick={() => deleteFilme(res.id)} 
                                             className="bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">
                                             Excluir
                                         </button>

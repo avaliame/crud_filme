@@ -11,8 +11,10 @@ export default function GerenciarGenero() {
     const [nome, setNome] = useState('');
     const [genero, setGenre] = useState([]);
     const router = useRouter();
+    const [mensagem, setMensagem] = useState('');
 
-    // Carregar gêneros ao montar o componente
+
+    
     useEffect(() => {
         const fetchGenero = async () => {
             try {
@@ -25,7 +27,7 @@ export default function GerenciarGenero() {
         fetchGenero();
     }, []);
 
-    // Carregar gênero para edição
+    
     useEffect(() => {
         if (id) {
             const fetchGenero = async () => {
@@ -41,18 +43,19 @@ export default function GerenciarGenero() {
         }
     }, [id]);
 
-    // Enviar dados do gênero
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setMensagem('');
         try {
             if (id) {
                 await axios.put(`/api/genero?id=${id}`, { nome });
             } else {
                 await axios.post('/api/genero', { nome });
             }
-            router.push("/genero"); // Redirecionar para a lista de gêneros
+            router.push("/genero"); 
         } catch (error) {
-            console.error("Erro ao salvar gênero:", error);
+            console.error("Erro ao criar gênero:", error);
+            setMensagem('Gênero já existente !');
         }
     };
 
@@ -71,7 +74,8 @@ export default function GerenciarGenero() {
                             required
                         />
                     </div>
-
+                    
+                    {mensagem && <p className="text-red-500 mb-4">{mensagem}</p>} 
                     <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md">Salvar</button>
                 </form>
 

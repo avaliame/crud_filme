@@ -14,7 +14,7 @@ export default async function handler(req, res) {
             if (id) {
                 const filme = await prisma.filme.findUnique({
                     where: {
-                        id: parseInt(id), // Certifique-se de converter o ID para número
+                        id: parseInt(id), 
                     },
                     include: {
                         genero: true, // Inclui o gênero do filme
