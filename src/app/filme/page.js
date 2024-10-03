@@ -43,6 +43,11 @@ export default function ClientePage() {
 				<div className=" mb-4 w-full grid justify-items-end">
 				<a className="px-2 py-2 border border-1 bg-gray-700 rounded-md text-white" href="/filme/formulario">+ Adicionar</a>
 				</div>
+
+				<div className="mb-4 w-full grid justify-items-end">
+                <a href="/" className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"> Pagina inicial</a>
+                </div>
+				
 				<div className="overflow-x-auto">
 					<table class="min-w-full table-auto">
 						<thead>
@@ -66,11 +71,11 @@ export default function ClientePage() {
 												<td class="px-4 py-2">{res.diretor}</td>
 												<td class="px-4 py-2">{res.genero.nome}</td>
 												<td class="px-4 py-2">
-													<a  href={`/filme/edit?id=${res.ano}`} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-2">Editar</a>
+													<a  href={`/filme/edit?id=${res.id}`} className="bg-blue-900 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-4">Editar</a>
 													
 													<button
                                             onClick={() => deleteFilme(res.id)} // Chama a função de exclusão
-                                            className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">
+                                            className="bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">
                                             Excluir
                                         </button>
 												</td>

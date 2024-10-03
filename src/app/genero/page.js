@@ -35,10 +35,14 @@ export default function ClientePage() {
         <>
             <div className="bg-gray-100 h-screen flex items-center justify-center">
                 <div class="w-full max-w-3xl bg-white p-8 rounded-lg shadow-lg">
-                    <h2 class="text-2xl font-bold mb-6 text-center">Lista de Gêneros de Filmes </h2>
+                    <h2 class="text-2xl font-bold mb-6 text-center">Lista de Gêneros </h2>
                     
                     <div className=" mb-4 w-full grid justify-items-end">
                         <a className="px-2 py-2 border border-1 bg-gray-700 rounded-md text-white" href="/genero/formulario">+ Adicionar</a>
+                    </div>
+                    
+                    <div className="mb-4 w-full grid justify-items-end">
+                    <a href="/" className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"> Pagina inicial</a>
                     </div>
 
                     <div class="overflow-x-auto">
@@ -56,11 +60,11 @@ export default function ClientePage() {
                                         <td class="px-4 py-2">{res.id}</td>
                                         <td class="px-4 py-2">{res.nome}</td>
                                         <td class="px-4 py-2">
-                                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-2">Editar</button>
+                                        <a  href={`/genero/edit?id=${res.id}`} class="bg-blue-900 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-4">Editar</a>
                                             
                                             <button
                                             onClick={() => deleteGenero(res.id)} // Chama a função de exclusão
-                                            className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">
+                                            className="bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">
                                             Excluir
                                         </button>
 

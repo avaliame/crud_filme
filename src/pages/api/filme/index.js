@@ -3,6 +3,7 @@ import { parse } from 'date-fns';
 const prisma = new PrismaClient();
 
 
+
 export default async function handler(req, res) {
     const method = req.method
 
@@ -11,7 +12,6 @@ export default async function handler(req, res) {
             const { id } = req.query;
 
             if (id) {
-                // Se houver um ID na query string, busca apenas o filme com esse ID
                 const filme = await prisma.filme.findUnique({
                     where: {
                         id: parseInt(id), // Certifique-se de converter o ID para número
@@ -33,39 +33,42 @@ export default async function handler(req, res) {
                     },
                 });
                 res.status(200).json(filme);
-                break;
             }
+                break;
 
 
         case 'POST':
-            let { titulo, Datalancamento, ano, diretor, generoId } = req.body
-            console.log("chegou no backend")
-            console.log(Datalancamento)
+            let { titulo, Datalancamento, ano, diretor, generoId } = req.body;
             const filme = await prisma.filme.create({
                 data: {
-                    titulo, Datalancamento, ano, diretor, generoId,
-                    include: {
-                        genero: true,  // Incluir também após a criação, se quiser retornar o nome do gênero.
-                    },
-                }
+                    titulo,
+                    Datalancamento,
+                    ano,
+                    diretor,
+                    generoId,
+                },
+                include: {
+                    genero: true,
+                },
             });
             res.status(201).json(filme);
-
             break;
+
         case 'PUT':{
 
-            const { id } = req.query.id;
+            const { id } = req.query;
             if (!id) {
                 return res.status(400).json({ error: 'ID é necessário' });
             }
 
             const updatedFilme = await prisma.filme.update({
-                where: { id: parsrInt(id) },
+                where: { id: parseInt(id) },
                 data: req.body,
             });
             res.json(updatedFilme);
             break;
         }
+        
         case 'DELETE':{
             const id = req.query.id;
             if (!id) {
